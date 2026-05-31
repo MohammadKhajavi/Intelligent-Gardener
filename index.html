@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کاتالوگ باغبان هوشمند - راهنمای کامل</title>
+    <title>باغبان هوشمند - صفحه اصلی</title>
     <style>
         * {
             margin: 0;
@@ -17,8 +17,8 @@
             padding: 2rem 1rem;
             line-height: 1.8;
         }
-        .guide {
-            max-width: 1100px;
+        .container {
+            max-width: 800px;
             margin: 0 auto;
             background: white;
             border-radius: 2rem;
@@ -35,426 +35,106 @@
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
-        .header .slogan {
+        .slogan {
             font-size: 1.3rem;
             font-style: italic;
-            margin: 0.5rem 0;
-            background: rgba(255,255,200,0.2);
-            display: inline-block;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
+            margin-top: 0.5rem;
         }
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .content {
+            padding: 2rem;
         }
-        .toc {
-            background: #f9fbe7;
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid #d8e8d8;
-            text-align: center;
-        }
-        .toc h2 {
-            color: #1e4a1e;
+        .content p {
             margin-bottom: 1rem;
-            border-right: none;
-            display: inline-block;
-            border-bottom: 2px solid #ffc107;
-            padding-bottom: 0.3rem;
+            text-align: justify;
         }
-        .toc-list {
+        .btn-group {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            list-style: none;
-            padding-right: 0;
-            margin-top: 1rem;
+            gap: 1rem;
+            margin: 2rem 0 1rem;
         }
-        .toc-list li {
-            margin: 0.3rem 0;
-            width: fit-content;
-        }
-        .toc-list a {
+        .btn {
+            background: #2e7d32;
+            color: white;
+            padding: 12px 20px;
             text-decoration: none;
-            color: #2e7d32;
-            font-weight: 500;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            transition: 0.2s;
-            display: inline-block;
-        }
-        .toc-list a:hover {
-            background: #ffc107;
-            color: #1e4a1e;
-            padding-right: 1.2rem;
-        }
-        /* صفحه‌بندی برای چاپ - هر مرحله در صفحه جداگانه */
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-                margin: 0;
-            }
-            .guide {
-                box-shadow: none;
-                max-width: 100%;
-                border-radius: 0;
-            }
-            .toc, .header, .ending, .contact, .footer {
-                page-break-after: avoid;
-            }
-            .step {
-                page-break-before: always;
-            }
-            .step:first-of-type {
-                page-break-before: avoid;
-            }
-            .toc-list a {
-                text-decoration: none;
-                color: black;
-            }
-        }
-        .step {
-            padding: 1.8rem 2rem;
-            border-bottom: 1px solid #d8e8d8;
-            scroll-margin-top: 1rem;
-        }
-        .step:last-child {
-            border-bottom: none;
-        }
-        .step-title {
-            font-size: 1.7rem;
-            color: #1e4a1e;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-right: 5px solid #ffc107;
-            padding-right: 15px;
-        }
-        .step-number {
-            background: #ffc107;
-            color: #1e4a1e;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 40px;
             font-weight: bold;
-            font-size: 1.3rem;
+            text-align: center;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: block;
         }
-        .info-box {
-            background: #f9fbe7;
-            padding: 1rem 1.5rem;
-            border-radius: 1.2rem;
-            margin: 1rem 0;
-            border-right: 4px solid #ffb74d;
+        .btn:hover {
+            background: #1e4a1e;
+            transform: scale(1.02);
         }
         .note {
-            background: #e8f0e8;
-            padding: 0.8rem;
-            border-radius: 1rem;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-        .warning {
-            background: #fff0f0;
-            border-right: 4px solid #e74c3c;
-            padding: 0.8rem;
-            border-radius: 1rem;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-        .code {
-            background: #2d2d2d;
-            color: #ffd966;
-            padding: 0.3rem 0.6rem;
-            border-radius: 12px;
-            font-family: monospace;
-            font-size: 1.1rem;
-            display: inline-block;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-            font-size: 0.9rem;
-        }
-        th, td {
-            border: 1px solid #cde0cd;
-            padding: 0.5rem;
-            text-align: right;
-            vertical-align: top;
-        }
-        th {
-            background: #eef5ee;
-            color: #1e4a1e;
-        }
-        ul, ol {
-            padding-right: 1.8rem;
-            margin: 0.8rem 0;
-        }
-        li {
-            margin: 0.6rem 0;
-        }
-        .ending {
-            background: #fff7e0;
-            padding: 1.5rem;
-            text-align: center;
-            font-size: 1.1rem;
-            border-top: 2px solid #ffc107;
-            margin-top: 0;
-        }
-        .contact {
-            background: #e8f0e8;
+            background: #f9fbe7;
             padding: 1rem;
+            border-radius: 1rem;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
             text-align: center;
-            font-size: 1rem;
-            border-top: 1px solid #cde0cd;
-            border-bottom: 1px solid #cde0cd;
-            direction: ltr;
-        }
-        .contact span {
-            direction: rtl;
-            display: inline-block;
-            margin: 0 0.5rem;
         }
         .footer {
             background: #1e2a1e;
             color: #cfe3cf;
             text-align: center;
-            padding: 1.5rem;
+            padding: 1rem;
             font-size: 0.9rem;
         }
         @media (max-width: 700px) {
-            .step {
-                padding: 1.2rem;
-            }
-            .step-title {
-                font-size: 1.3rem;
-            }
-            .toc-list li {
-                width: auto;
-            }
+            .header h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
-<div class="guide">
+<div class="container">
     <div class="header">
         <h1>🌿 باغبان هوشمند</h1>
         <div class="slogan">هوشمندانه آبیاری کن، عاشقانه برداشت کن</div>
-        <p>راهنمای گام‌به‌گام برای راه‌اندازی و استفاده</p>
-        <div style="margin-top: 10px; font-size: 0.9rem;">طراح و توسعه‌دهنده: محمد خواجوی</div>
     </div>
+    <div class="content">
+        <p>به وب‌سایت رسمی پروژه <strong>«باغبان هوشمند»</strong> خوش آمدید. این دستگاه با هدف مکانیزه کردن آبیاری، کوددهی و نوردهی گیاهان آپارتمانی طراحی و ساخته شده است. پروژه توسط <strong>محمد خواجوی</strong> طراحی و توسعه یافته و با استفاده از فناوری‌های اینترنت اشیاء (IoT) و سیستم‌های خودکار، نگهداری از گیاهان را به تجربه‌ای لذت‌بخش تبدیل می‌کند.</p>
+        <p>دستگاه «باغبان هوشمند» قادر است رطوبت خاک را اندازه‌گیری کرده و به طور خودکار آبیاری و کوددهی را انجام دهد. همچنین با لامپ UV مکمل، نور مورد نیاز گیاهان آپارتمانی را تأمین می‌کند. تمام تنظیمات از طریق یک پنل وب ساده و بدون نیاز به اپلیکیشن قابل انجام است.</p>
+        <p>از طریق دکمه‌های زیر می‌توانید به کاتالوگ جامع دستگاه دسترسی پیدا کنید، فایل‌های آموزشی را دانلود کرده و یا پوستر محصول را مشاهده نمایید.</p>
 
-    <div class="toc">
-        <h2>📖 سخن آغازین</h2>
-        <p style="margin-bottom: 1rem;">دستگاه «باغبان هوشمند» با بهره‌گیری از فناوری اینترنت اشیاء، نگهداری از گیاهان آپارتمانی را به کاری لذت‌بخش و بدون دغدغه تبدیل کرده است. با این راهنما، در کمترین زمان ممکن می‌توانید دستگاه را راه‌اندازی کرده و از آبیاری خودکار، کوددهی منظم و نور مکمل مناسب بهره‌مند شوید. در صورت بروز هر گونه سؤال، کد اختصاصی دستگاه خود را آماده داشته باشید.</p>
-        <h2>📑 فهرست مطالب</h2>
-        <ul class="toc-list">
-            <li><a href="#step1">۱. آنچه در جعبه می‌یابید و آماده‌سازی اولیه</a></li>
-            <li><a href="#step2">۲. صفحه نمایش LCD – آنچه باید بدانید</a></li>
-            <li><a href="#step3">۳. اتصال به پنل مدیریت وب (بدون نیاز به اینترنت)</a></li>
-            <li><a href="#step4">۴. تنظیم آبیاری خودکار (قلب سیستم)</a></li>
-            <li><a href="#step5">۵. برنامه‌ریزی کوددهی مایع</a></li>
-            <li><a href="#step6">۶. مدیریت نور مکمل UV</a></li>
-            <li><a href="#step7">۷. اتصال به وای‌فای منزل و فعال‌سازی گزارش‌های خودکار</a></li>
-            <li><a href="#step8">۸. تنظیم دستی ساعت (زمانی که به اینترنت متصل نیستید)</a></li>
-            <li><a href="#step9">۹. عیب‌یابی و رفع خطا (هشدار صوتی و کدهای خطا)</a></li>
-            <li><a href="#step10">۱۰. راهنمای پیام‌های دریافتی از ربات بله</a></li>
-            <li><a href="#step11">۱۱. کد اختصاصی دستگاه شما</a></li>
-        </ul>
-    </div>
+        <div class="btn-group">
+            <a href="catalog.html" class="btn">📖 کاتالوگ</a>
+            <a href="https://drive.google.com/uc?export=download&id=FILE_ID_MANUAL" class="btn">📘 دفتر کارنما</a>
+            <a href="https://drive.google.com/uc?export=download&id=FILE_ID_VIDEO" class="btn">🎬 فیلم مونتاژ دستگاه</a>
+            <a href="#" id="posterBtn" class="btn">🖼️ پوستر دستگاه</a>
+            <a href="https://drive.google.com/uc?export=download&id=FILE_ID_CODE" class="btn">🔑 فایل کد دستگاه</a>
+            <a href="https://drive.google.com/uc?export=download&id=FILE_ID_ZIP" class="btn">📦 دانلود کل به صورت زیپ</a>
+        </div>
 
-    <!-- مرحله 1 -->
-    <div class="step" id="step1">
-        <div class="step-title"><span class="step-number">۱</span> آنچه در جعبه می‌یابید و آماده‌سازی اولیه</div>
-        <p>دستگاه «باغبان هوشمند» به صورت کاملاً مونتاژ و آماده به کار، همراه با <strong>دو جفت شلنگ مجزا (شلنگ‌های ورودی و خروجی برای آبیاری و کوددهی)</strong>، یک سنسور رطوبت خاک، یک لامپ UV مکمل و دفترچه راهنما به دست شما می‌رسد. هیچ گونه سیم‌بندی یا اتصال اضافی مورد نیاز نیست. تنها کافی است مراحل زیر را به ترتیب انجام دهید:</p>
-        <ul>
-            <li><strong>شلنگ آبیاری (ورودی – متصل به پمپ سمت راست):</strong> انتهای این شلنگ را درون یک ظرف حاوی <strong>آب شفاف، بدون املاح سنگین</strong> (آب تصفیه شده یا آب جوشیده خنک شده) قرار دهید. مطمئن شوید که شلنگ کاملاً در آب غوطه‌ور است. <strong>شلنگ خروجی این پمپ (که از سمت چپ دستگاه خارج می‌شود) را درون خاک گلدان، در نزدیکی ریشه گیاه فرو کنید.</strong></li>
-            <li><strong>شلنگ کوددهی (ورودی – متصل به پمپ سمت چپ):</strong> این شلنگ را درون ظرفی حاوی <strong>محلول کود مایع</strong> قرار دهید. کود باید کاملاً در آب حل شده و فاقد هرگونه ذرات معلق یا رسوب باشد تا گرفتگی ایجاد نشود. <strong>شلنگ خروجی این پمپ (که از همان سمت چپ دستگاه خارج می‌شود) نیز در کنار شلنگ آبیاری، درون خاک گلدان فرو می‌رود.</strong></li>
-            <li><strong>سنسور رطوبت خاک:</strong> پروب فلزی سنسور را به آرامی درون خاک گلدان، در نزدیکی ریشه گیاه فرو کنید. دقت نمایید که <strong>بدنه فلزی سنسور با کف گلدان تماس نداشته باشد</strong> و همچنین به دیواره فلزی یا دیگر قطعات فلزی گلدان برخورد نکند. بهترین محل، ناحیه میانی گلدان و در عمق ۵ تا ۷ سانتی‌متری سطح خاک است.</li>
-        </ul>
-        <div class="info-box">
-            🔌 <strong>تأمین برق:</strong> دستگاه با یک دوشاخه استاندارد به برق شهری (۲۲۰ ولت) متصل می‌شود. کافی است دوشاخه را به پریز دیوار بزنید. <strong>دستگاه دارای یک باتری پشتیبان داخلی است</strong> که در زمان قطع برق، توان کافی برای به حرکت درآوردن پمپ‌ها و حفظ تنظیمات را دارد، اما به دلیل ولتاژ محدود (۱۲ ولت) <strong>قادر به روشن کردن لامپ UV ۲۲۰ ولت نیست</strong>. بنابراین برای استفاده از لامپ UV، حتماً دستگاه باید به برق شهری متصل باشد.
+        <div class="note">
+            💡 <strong>راهنمای تنظیم لینک‌ها:</strong> 
+            فایل‌های خود را در گوگل درایو آپلود کرده و لینک مستقیم آن‌ها را جایگزین <code>FILE_ID_MANUAL</code>، <code>FILE_ID_VIDEO</code>، <code>FILE_ID_CODE</code> و <code>FILE_ID_ZIP</code> کنید. برای پوستر نیز لینک تصویر را در کد جاوااسکریپت (بخش <code>posterModal</code>) جایگزین نمایید.
         </div>
     </div>
-
-    <!-- مرحله 2 -->
-    <div class="step" id="step2">
-        <div class="step-title"><span class="step-number">۲</span> صفحه نمایش LCD – آنچه باید بدانید</div>
-        <p>پس از اتصال برق و روشن کردن دستگاه، صفحه نمایش LCD در دو خط اطلاعاتی را به شما نشان می‌دهد. رفتار صفحه نمایش به صورت زیر است:</p>
-        <ul>
-            <li><strong>ثانیه‌های اولیه (بوت):</strong> در حدود ۳ تا ۵ ثانیه، صفحه دو پیام «hello» و «Initializing...» را به صورت وسط‌چین نمایش می‌دهد.</li>
-            <li><strong>حالت عادی (چرخش خودکار):</strong> پس از راه‌اندازی، صفحه به ترتیب هر ۳۰ تا ۴۵ ثانیه بین سه حالت جابه‌جا می‌شود:
-                <ul>
-                    <li><strong>حالت زمان و IP:</strong> خط اول ساعت جاری (فرمت ۲۴ ساعته) و خط دوم آدرس IP دستگاه (در صورت اتصال به مودم) یا عبارت <strong>No IP</strong> (در صورت عدم اتصال) نمایش داده می‌شود.</li>
-                    <li><strong>حالت رطوبت:</strong> خط اول درصد رطوبت خاک (مثلاً «۴۵%») و خط دوم عبارت «SOIL MOISTURE» نشان داده می‌شود.</li>
-                    <li><strong>حالت خطا:</strong> اگر خطایی فعال باشد، خط اول «ERROR» و خط دوم کد خطا (مانند WE یا FE) به همراه پیام کوتاه نمایش می‌یابد. در غیر این صورت، خط اول «SYSTEM OK» و خط دوم «READY» دیده می‌شود.</li>
-                </ul>
-            </li>
-            <li><strong>رویدادهای ویژه:</strong> هنگامی که آبیاری یا کوددهی آغاز می‌شود، صفحه LCD برای یک لحظه خاموش و سپس روشن می‌شود (ریست بصری) تا توجه شما را جلب کند. همچنین در هنگام بروز خطا، بوق هشدار به صدا درمی‌آید و صفحه به حالت خطا می‌رود.</li>
-        </ul>
-        <div class="note">💡 <strong>نکته:</strong> برای مشاهده جزئیات کامل وضعیت (مانند آستانه رطوبت، فعال بودن گزارش‌ها و...) باید وارد پنل وب شوید. صفحه LCD صرفاً خلاصه‌ای از مهم‌ترین اطلاعات را نمایش می‌دهد.</div>
-    </div>
-
-    <!-- مرحله 3 -->
-    <div class="step" id="step3">
-        <div class="step-title"><span class="step-number">۳</span> اتصال به پنل مدیریت وب (بدون نیاز به اینترنت)</div>
-        <p>برای تنظیم آبیاری، کوددهی و نور، نیازی به نصب اپلیکیشن نیست. دستگاه خود یک وب‌سایت داخلی دارد که از طریق تلفن همراه یا لپ‌تاپ قابل دسترسی است. لطفاً مطابق گام‌های زیر عمل فرمایید:</p>
-        <ol>
-            <li>در گوشی یا لپ‌تاپ خود، به تنظیمات وای‌فای بروید.</li>
-            <li>شبکه‌ای با نام <strong class="code">IntelligentGardener</strong> را مشاهده خواهید کرد. به آن متصل شوید.</li>
-            <li>رمز عبور شبکه را وارد کنید: <strong class="code">12345678</strong> (هشت رقم).</li>
-            <li>اگر گوشی شما هشدار داد «این شبکه اینترنت ندارد»، گزینه «باقی ماندن در این شبکه» را انتخاب کنید (این هشدار طبیعی است).</li>
-            <li>مرورگر گوشی را باز کرده و در نوار آدرس، عدد <strong class="code">192.168.4.1</strong> را تایپ کرده و Enter بزنید.</li>
-            <li>اکنون صفحه کنترل پنل باز شده است. تبریک! شما وارد مرکز فرماندهی باغبان هوشمند شده‌اید.</li>
-        </ol>
-        <div class="info-box">
-            🟢 <strong>توضیح:</strong> این اتصال مستقیم و محلی است و هیچ داده‌ای از اینترنت مصرف نمی‌کند. توجه داشته باشید که در این حالت (اتصال به شبکه IntelligentGardener) آدرس 192.168.4.1 همیشه در دسترس است، اما روی صفحه LCD این آدرس نمایش داده نمی‌شود (صفحه LCD فقط در صورت اتصال به مودم، IP جدید را نشان می‌دهد).
-        </div>
-    </div>
-
-    <!-- مراحل ۴ تا ۶ (آبیاری، کود، UV) -->
-    <div class="step" id="step4">
-        <div class="step-title"><span class="step-number">۴</span> تنظیم آبیاری خودکار (قلب سیستم)</div>
-        <p>در پنل وب، بخش <strong>Irrigation</strong> (آبیاری) را پیدا کنید. در این قسمت دو عدد کلیدی وجود دارد:</p>
-        <ul>
-            <li><strong>حد پایین رطوبت (Lower Threshold):</strong> اگر رطوبت خاک از این مقدار کمتر شود، دستگاه به طور خودکار آبیاری را آغاز می‌کند. پیشنهاد می‌شود برای شروع، عدد ۳۰ را انتخاب نمایید.</li>
-            <li><strong>حد بالای رطوبت (Upper Threshold):</strong> هنگامی که رطوبت خاک به این مقدار برسد، آبیاری قطع می‌شود. مقدار پیشنهادی ۶۵ است.</li>
-        </ul>
-        <p>همچنین می‌توانید آبیاری خودکار را به طور کلی فعال یا غیرفعال کنید. ضمناً یک پروتکل ایمنی تعبیه شده که اگر رطوبت خاک به ۹۵٪ یا بیشتر برسد (خیس شدگی بیش از حد)، پمپ آب هرگز روشن نخواهد شد تا از پوسیدگی ریشه جلوگیری شود.</p>
-        <div class="note">✨ <strong>نکته حرفه‌ای:</strong> اعداد را بر اساس نوع گیاه خود تنظیم کنید. گیاهان گوشتی به رطوبت کم و گیاهان گرمسیری به رطوبت بیشتر نیاز دارند.</div>
-    </div>
-
-    <div class="step" id="step5">
-        <div class="step-title"><span class="step-number">۵</span> برنامه‌ریزی کوددهی مایع</div>
-        <p>اگر مایل هستید دستگاه به طور خودکار کود مایع به گیاه شما تزریق کند، بخش <strong>Fertilizer</strong> را پیکربندی نمایید:</p>
-        <ul>
-            <li><strong>فعال‌سازی (Enable):</strong> سوئیچ را روشن کنید.</li>
-            <li><strong>فاصله زمانی (Interval):</strong> تعیین کنید هر چند روز یک بار کوددهی انجام شود (مثلاً ۵ روز).</li>
-            <li><strong>ساعت شروع (Start Time):</strong> زمان دقیق تزریق کود را وارد کنید (به ساعت ۲۴ ساعته).</li>
-            <li><strong>حجم دوز (Dose Volume):</strong> مقدار کود مورد نظر را بر حسب میلی‌لیتر مشخص کنید (پیشنهاد اولیه ۲۰ میلی‌لیتر).</li>
-        </ul>
-        <p>دستگاه هوشمندانه عمل می‌کند: ابتدا مسیر را هواگیری می‌کند (تا حباب هوا خارج شود) و سپس دوز اصلی را تزریق می‌نماید. در صورت بروز هر گونه خطا (مانند تمام شدن کود)، بوق هشدار به صدا درمی‌آید.</p>
-    </div>
-
-    <div class="step" id="step6">
-        <div class="step-title"><span class="step-number">۶</span> مدیریت نور مکمل UV</div>
-        <div class="warning">
-            ⚡ <strong>توجه بسیار مهم:</strong> لامپ UV از نوع <strong>۲۲۰ ولت</strong> است و برای کار کردن به جریان مستقیم برق شهر نیاز دارد. باتری پشتیبان داخلی دستگاه ۱۲ ولت است و توان کافی برای روشن کردن این لامپ را فراهم نمی‌کند. بنابراین <strong>برای استفاده از لامپ UV، دستگاه حتماً باید از طریق دوشاخه به برق شهری متصل باشد</strong>. در حالت باتری، لامپ UV روشن نخواهد شد.
-        </div>
-        <p>برای گیاهانی که نور طبیعی کافی دریافت نمی‌کنند، لامپ UV را در جای مناسب قرار دهید. پیشنهاد می‌شود لامپ را در محلی نصب کنید که نور آن به طور یکنواخت روی گیاه بتابد و از تماس مستقیم با برگ‌ها جلوگیری شود. سپس در بخش <strong>UV Light</strong> پنل وب:</p>
-        <ul>
-            <li><strong>فعال‌سازی UV:</strong> سوئیچ را روشن کنید.</li>
-            <li><strong>ساعت روشن شدن (Start Time):</strong> مثلاً 08:00 (ساعت ۸ صبح).</li>
-            <li><strong>ساعت خاموش شدن (End Time):</strong> مثلاً 18:00 (ساعت ۶ عصر).</li>
-            <li><strong>فاصله روزانه (Interval):</strong> معمولاً ۱ قرار دهید تا هر روز تکرار شود.</li>
-        </ul>
-        <p>دستگاه هر روز در بازه زمانی تعیین شده، لامپ را روشن و خاموش می‌کند تا چرخه نور طبیعی شبیه‌سازی گردد.</p>
-    </div>
-
-    <!-- مرحله 7 -->
-    <div class="step" id="step7">
-        <div class="step-title"><span class="step-number">۷</span> اتصال به وای‌فای منزل و فعال‌سازی گزارش‌های خودکار (اختیاری)</div>
-        <p>این مرحله برای کسانی است که می‌خواهند هشدارها و گزارش‌های دستگاه را در پیام‌رسان <strong>بله</strong> دریافت کنند. اگر به این قابلیت نیاز ندارید، می‌توانید از این مرحله عبور کرده و دستگاه بدون اینترنت نیز به طور کامل کار خواهد کرد. <strong>ضمناً در صورت اتصال به اینترنت، قابلیت گزارش خودکار ۸ ساعته نیز فعال می‌شود.</strong></p>
-        <ol>
-            <li>در پنل وب، به بخش <strong>Advanced Settings</strong> بروید.</li>
-            <li>در قسمت <strong>WiFi Settings</strong>، نام دقیق وای‌فای منزل خود (SSID) و رمز عبور آن را وارد کنید.</li>
-            <li>روی دکمه <strong>Save & Reboot</strong> کلیک کنید. دستگاه یک بار راه‌اندازی مجدد می‌شود و به مودم شما متصل می‌گردد.</li>
-            <li>پس از اتصال موفق، روی صفحه LCD یک آدرس آی‌پی جدید (مثلاً 192.168.1.12) نمایش داده می‌شود. این آدرس را یادداشت کنید.</li>
-            <li>حالا گوشی خود را به همان وای‌فای منزل متصل کنید. در مرورگر، به جای 192.168.4.1، آن آدرس جدید را وارد نمایید. مجدداً پنل مدیریت باز خواهد شد.</li>
-            <li>برای دریافت پیام در بله، یک ربات شناسه‌یاب (مانند @GetMyIDBot) را در بله پیدا کنید و شناسه عددی خود را دریافت نمایید. سپس در بخش <strong>Bale Chat ID</strong> آن عدد را وارد کرده و ذخیره کنید. دستگاه مجدداً ریستارت می‌شود.</li>
-            <li><strong>فعال‌سازی گزارش ۸ ساعته:</strong> پس از اتصال موفق به اینترنت، در پنل وب سوئیچ <strong>8h Report</strong> را روشن کنید. از آن لحظه به بعد، هر ۸ ساعت یک بار (ساعات ۰، ۸، ۱۶) پیامی حاوی رطوبت فعلی خاک، وضعیت خطاها و عملکرد پمپ‌ها برای شما ارسال می‌شود. این ویژگی برای افرادی که در مسافرت هستند یا نمی‌خواهند مدام پنل را چک کنند، بسیار کارآمد است.</li>
-        </ol>
-        <div class="info-box">
-            📱 <strong>توجه:</strong> اگر نمی‌خواهید از پیام‌رسان استفاده کنید، اتصال به وای‌فای منزل هیچ مزیتی ندارد و می‌توانید دستگاه را در همان حالت AP (بدون اینترنت) نگه دارید. در این صورت گزارش ۸ ساعته نیز ارسال نخواهد شد.
-        </div>
-    </div>
-
-    <!-- مرحله 8 -->
-    <div class="step" id="step8">
-        <div class="step-title"><span class="step-number">۸</span> تنظیم دستی ساعت (زمانی که به اینترنت متصل نیستید)</div>
-        <p>اگر دستگاه را به وای‌فای منزل متصل نکرده‌اید، ساعت داخلی آن از روی اینترنت تنظیم نمی‌شود. برای هماهنگی زمان (مثلاً برای برنامه کوددهی یا UV) باید ساعت را به صورت دستی وارد کنید. در پنل وب، بخش <strong>Advanced Settings</strong> را باز کرده و در قسمت <strong>Manual Time</strong>، تاریخ و ساعت جاری را انتخاب کنید و دکمه <strong>Set</strong> را بزنید. دستگاه بلافاصله زمان را ذخیره می‌کند. (در صورت اتصال به اینترنت، این مرحله خودکار است و نیازی به دخالت شما ندارد.)</p>
-        <div class="note">⏰ <strong>نکته:</strong> اگر دستگاه به مودم متصل باشد، زمان را از سرورهای NTP دریافت می‌کند و نیازی به تنظیم دستی نیست.</div>
-    </div>
-
-    <!-- مرحله 9 -->
-    <div class="step" id="step9">
-        <div class="step-title"><span class="step-number">۹</span> عیب‌یابی و رفع خطا (هشدار صوتی و کدهای خطا)</div>
-        <p>دستگاه به طور پیوسته سلامت خود را پایش می‌کند. در صورت بروز مشکل، یک <strong>بوق ۸ ثانیه‌ای</strong> به صدا درمی‌آید و روی پنل وب و صفحه LCD پیام خطا نشان داده می‌شود. دو خطای اصلی عبارتند از:</p>
-        <ul>
-            <li><strong>WE (خطای آبیاری):</strong> پمپ آب بیش از ۶۰ ثانیه روشن بوده ولی رطوبت افزایش نیافته. علت احتمالی: اتمام آب مخزن، گرفتگی یا دررفتگی شلنگ.</li>
-            <li><strong>FE (خطای کوددهی):</strong> در ۳۰ ثانیه اول تزریق کود، رطوبت ۵٪ بالا نرفته. علت احتمالی: خالی شدن ظرف کود، گرفتگی نازل.</li>
-        </ul>
-        <p>پس از رفع مشکل (مثلاً پر کردن آب یا کود)، وارد پنل وب شده و دکمه <strong>Clear Error</strong> را فشار دهید. بوق قطع می‌شود و سیستم دوباره به کار خود ادامه می‌دهد. همچنین دکمه <strong>Reboot</strong> برای راه‌اندازی مجدد نرم‌افزاری در مواقع ضروری تعبیه شده است.</p>
-    </div>
-
-    <!-- مرحله 10: جدول پیام‌ها -->
-    <div class="step" id="step10">
-        <div class="step-title"><span class="step-number">۱۰</span> راهنمای پیام‌های دریافتی از ربات بله</div>
-        <p>اگر دستگاه را به اینترنت و حساب کاربری خود در پیام‌رسان بله متصل کرده باشید، در رویدادهای مهم پیام‌هایی از طرف ربات دریافت می‌کنید. در جدول زیر، هر پیام و معنای آن توضیح داده شده است:</p>
-        <table>
-            <thead>
-                <tr><th>متن پیام</th><th>رویداد / معنی</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>🔌 Device Online.</td><td>دستگاه با موفقیت به وای‌فای متصل شد و راه‌اندازی اولیه انجام گردید.</td></tr>
-                <tr><td>💧 Watering Started</td><td>عملیات آبیاری خودکار آغاز شد (به دلیل کاهش رطوبت خاک).</td></tr>
-                <tr><td>📡 Status: Watering ON (X%)</td><td>گزارش ۸ ساعته فعال است و شروع آبیاری همراه با رطوبت فعلی ارسال می‌شود.</td></tr>
-                <tr><td>✅ Watering Done (X%)</td><td>آبیاری با موفقیت پایان یافت (رطوبت به حد بالای تعیین شده رسید).</td></tr>
-                <tr><td>📡 Status: Watering OFF.</td><td>گزارش ۸ ساعته فعال است و پایان آبیاری اطلاع داده می‌شود.</td></tr>
-                <tr><td>❌ Watering Failed</td><td>آبیاری ناموفق بود (تایم‌اوت ۶۰ ثانیه‌ای – خطای WE).</td></tr>
-                <tr><td>🌿 Fertilizing Started</td><td>عملیات کوددهی آغاز شد (فاز اول: هواگیری).</td></tr>
-                <tr><td>📡 Status: Fertilizing ON (Air Purge...)</td><td>گزارش ۸ ساعته فعال است و شروع کوددهی اعلام می‌گردد.</td></tr>
-                <tr><td>⏳ Main Dosing for X sec</td><td>ورود به فاز دوم کوددهی (تزریق اصلی) به مدت X ثانیه.</td></tr>
-                <tr><td>📡 Status: Main Dosing Phase Started.</td><td>گزارش ۸ ساعته فعال است و شروع تزریق اصلی اطلاع داده می‌شود.</td></tr>
-                <tr><td>✅ Fertilizing Done (Y ml)</td><td>کوددهی با موفقیت پایان یافت (Y میلی‌لیتر تزریق شد).</td></tr>
-                <tr><td>📡 Status: Fertilizing OFF.</td><td>گزارش ۸ ساعته فعال است و پایان کوددهی اعلام می‌گردد.</td></tr>
-                <tr><td>❌ Fertilizing Failed</td><td>کوددهی ناموفق بود (عدم افزایش ۵٪ رطوبت طی ۳۰ ثانیه – خطای FE).</td></tr>
-                <tr><td>☀️ UV Light ON</td><td>لامپ UV مطابق برنامه زمان‌بندی روشن شد.</td></tr>
-                <tr><td>☀️ UV Light OFF</td><td>لامپ UV مطابق برنامه زمان‌بندی خاموش شد.</td></tr>
-                <tr><td>⚠️ Error: [نام خطا]</td><td>هرگونه خطای فعال در سیستم (WE، FE و غیره).</td></tr>
-                <tr><td>📊 Status Report Moisture: X% No Error</td><td>گزارش ۸ ساعته بدون خطا – رطوبت فعلی X% است.</td></tr>
-                <tr><td>📊 Status Report Moisture: X% Error: [نام خطا]</td><td>گزارش ۸ ساعته همراه با خطای فعال.</td></tr>
-            </tbody>
-        </table>
-        <div class="info-box">
-            📢 <strong>نکته:</strong> پیام‌هایی که با «📡 Status» شروع می‌شوند تنها در صورتی ارسال می‌گردند که گزارش ۸ ساعته در پنل وب فعال شده باشد. سایر پیام‌ها حتی بدون فعال‌سازی گزارش نیز ارسال می‌شوند.
-        </div>
-    </div>
-
-    <!-- مرحله 11: کد دستگاه -->
-    <div class="step" id="step11">
-        <div class="step-title"><span class="step-number">۱۱</span> کد اختصاصی دستگاه شما</div>
-        <p>هر دستگاه «باغبان هوشمند» هنگام تولید، یک <strong>کد منحصر‌به‌فرد</strong> دریافت می‌کند. این کد روی برچسب پشت دستگاه و همچنین روی جعبه درج شده است. لطفاً این کد را در جای امنی یادداشت کنید. اگر در هر زمان نیاز به راهنمایی یا پشتیبانی فوری داشتید، این کد را به ما اطلاع دهید تا سریعاً وضعیت دستگاه شما را بررسی کرده و راهنمایی لازم را ارائه دهیم.</p>
-        <div style="background: #f0f0f0; text-align: center; padding: 1rem; border-radius: 1rem; margin: 1rem 0;">
-            <span style="font-size: 1.4rem;">🔑 کد دستگاه شما:</span>
-            <div style="font-size: 2rem; font-weight: bold; letter-spacing: 2px; background: white; display: inline-block; padding: 0.5rem 1.5rem; border-radius: 40px; margin-top: 0.5rem;">SMART-1234</div>
-        </div>
-        <p>با ذکر این کد، فرایند پشتیبانی برای ما بسیار سریع‌تر و دقیق‌تر خواهد شد.</p>
-    </div>
-
-    <!-- متن پایانی -->
-    <div class="ending">
-        🌟 <strong>سخن پایانی</strong><br>
-        از اینکه «باغبان هوشمند» را به عنوان همراه گیاهان خود انتخاب کردید، سپاسگزاریم. با اطمینان خاطر از آبیاری به موقع، تغذیه منظم و نور کافی، لحظات سبز و پرثمری را تجربه کنید. در صورت نیاز به راهنمایی بیشتر، همواره در کنار شما هستیم. <br>
-        <span style="font-size: 0.9rem;">پاینده باشید و شاداب مانند گیاهانتان.</span>
-    </div>
-
-    <!-- راه‌های ارتباطی -->
-    <div class="contact">
-        📞 <span>شماره تماس: <strong>09916258629</strong></span> &nbsp;|&nbsp;
-        ✉️ <span>ایتا: <strong>@MKhajavi91</strong></span>
-    </div>
-
     <div class="footer">
-        باغبان هوشمند – طراحی و توسعه توسط محمد خواجوی<br>
-        امیدواریم از داشتن گیاهانی همیشه شاداب و سالم لذت ببرید. 🌿
+        طراحی و توسعه توسط محمد خواجوی | تماس: 09916258629 | ایتا: @MKhajavi91
     </div>
 </div>
+
+<!-- پنجره بازشو برای نمایش پوستر -->
+<div id="posterModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
+    <div style="background:white; padding:1rem; border-radius:1rem; max-width:90%; max-height:90%; text-align:center;">
+        <img src="https://placehold.co/800x600/png?text=Poster+Image+Placeholder" alt="پوستر دستگاه" style="max-width:100%; max-height:70vh; border-radius:0.5rem;">
+        <br><br>
+        <button onclick="document.getElementById('posterModal').style.display='none'" class="btn" style="background:#e74c3c; margin-top:1rem;">بستن و برگشت</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('posterBtn').onclick = function(e) {
+        e.preventDefault();
+        document.getElementById('posterModal').style.display = 'flex';
+    };
+</script>
 </body>
 </html>
