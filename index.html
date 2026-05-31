@@ -47,6 +47,18 @@
             margin-bottom: 1rem;
             text-align: justify;
         }
+        .warning-box {
+            background: #fff0f0;
+            border-right: 5px solid #e74c3c;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            color: #a00;
+        }
+        .warning-box strong {
+            color: #c00;
+        }
         .btn-group {
             display: flex;
             flex-direction: column;
@@ -100,9 +112,15 @@
     <div class="content">
         <p>به وب‌سایت رسمی پروژه <strong>«باغبان هوشمند»</strong> خوش آمدید. این دستگاه با هدف مکانیزه کردن آبیاری، کوددهی و نوردهی گیاهان آپارتمانی طراحی و ساخته شده است. پروژه توسط <strong>محمد خواجوی</strong> طراحی و توسعه یافته و با استفاده از فناوری‌های اینترنت اشیاء (IoT) و سیستم‌های خودکار، نگهداری از گیاهان را به تجربه‌ای لذت‌بخش تبدیل می‌کند.</p>
         <p>دستگاه «باغبان هوشمند» قادر است رطوبت خاک را اندازه‌گیری کرده و به طور خودکار آبیاری و کوددهی را انجام دهد. همچنین با لامپ UV مکمل، نور مورد نیاز گیاهان آپارتمانی را تأمین می‌کند. تمام تنظیمات از طریق یک پنل وب ساده و بدون نیاز به اپلیکیشن قابل انجام است.</p>
-        <p>از طریق دکمه‌های زیر می‌توانید به کاتالوگ جامع دستگاه دسترسی پیدا کنید، فایل‌های آموزشی را دانلود کرده و یا پوستر محصول را مشاهده نمایید.</p>
+        <p>از طریق دکمه‌های زیر می‌توانید به کاتالوگ جامع دستگاه دسترسی پیدا کنید، فایل‌های آموزشی را دانلود کرده و یا پوستر محصول را دریافت نمایید.</p>
 
-       <div class="btn-group">
+        <!-- متن اطلاع‌رسانی حجم فایل‌ها -->
+        <div class="note" style="background:#fff3e0; border-right: 4px solid #ff9800;">
+            📦 <strong>توجه:</strong> به دلیل حفظ کیفیت بالا، نتوانستم حجم فایل‌ها را بیشتر از این کاهش دهم. بابت این موضوع پوزش می‌خواهم.<br>
+            <strong>حجم کل فایل‌ها برای دانلود: ۳۰۵ مگابایت</strong>
+        </div>
+
+         <div class="btn-group">
     <a href="catalog.html" class="btn">📖 کاتالوگ</a>
     <a href="https://drive.google.com/uc?export=download&id=FILE_ID_MANUAL" class="btn">📘 دفتر کارنما</a>
     <a href="https://drive.google.com/uc?export=download&id=1rP3z0c4LE_LFKkc8vtr_C13Ej8GB3ldT" class="btn">🎬 فیلم مونتاژ دستگاه</a>
@@ -110,20 +128,25 @@
     <a href="https://drive.google.com/uc?export=download&id=1p-u7SLHVmgcudfay3Q2mXFhkdNJDPUXg" class="btn">🔑 فایل کد دستگاه</a>
     <a href="https://drive.google.com/uc?export=download&id=FILE_ID_ZIP" class="btn">📦 دانلود کل به صورت زیپ</a>
 </div>
-      
+
+        <!-- کادر قرمز رنگ راهنمای دانلود فیلم -->
+        <div class="warning-box">
+            ⚠️ <strong>نکته مهم برای دانلود فیلم مونتاژ دستگاه:</strong><br>
+            به دلیل حجم بالای فیلم (بیش از ۱۰۰ مگابایت)، هنگام کلیک روی دکمه «فیلم مونتاژ دستگاه»، ممکن است پیغام زیر از طرف Google Drive نمایش داده شود:<br><br>
+            <em style="background:#fff; display:block; padding:0.5rem; border-radius:0.5rem; direction:ltr; text-align:left;">
+            "مراحل مونتاژ دستگاه.mp4 (۲۸۱M) خیلی بزرگ است و Google نمی‌تواند آن را برای بررسی وجود ویروس اسکن کند. می‌خواهید این فایل را بارگیری کنید؟"
+            </em><br>
+            <strong>شما با خیال راحت روی «بارگیری» (Download anyway) کلیک کنید. این فایل کاملاً سالم و بدون ویروس است.</strong>
+        </div>
+
+        <div class="note">
+            💡 <strong>راهنمای تنظیم لینک‌ها:</strong> 
+            لطفاً فایل‌های خود را در گوگل درایو آپلود کرده و لینک مستقیم آن‌ها را جایگزین <code>FILE_ID_MANUAL</code>، <code>FILE_ID_VIDEO</code>، <code>FILE_ID_POSTER</code>، <code>FILE_ID_CODE</code> و <code>FILE_ID_ZIP</code> کنید.
+        </div>
     </div>
     <div class="footer">
         طراحی و توسعه توسط محمد خواجوی | تماس: 09916258629 | ایتا: @MKhajavi91
     </div>
 </div>
-
-
-
-<script>
-    document.getElementById('posterBtn').onclick = function(e) {
-        e.preventDefault();
-        document.getElementById('posterModal').style.display = 'flex';
-    };
-</script>
 </body>
 </html>
