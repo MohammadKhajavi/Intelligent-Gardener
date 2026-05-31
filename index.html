@@ -102,15 +102,14 @@
         <p>دستگاه «باغبان هوشمند» قادر است رطوبت خاک را اندازه‌گیری کرده و به طور خودکار آبیاری و کوددهی را انجام دهد. همچنین با لامپ UV مکمل، نور مورد نیاز گیاهان آپارتمانی را تأمین می‌کند. تمام تنظیمات از طریق یک پنل وب ساده و بدون نیاز به اپلیکیشن قابل انجام است.</p>
         <p>از طریق دکمه‌های زیر می‌توانید به کاتالوگ جامع دستگاه دسترسی پیدا کنید، فایل‌های آموزشی را دانلود کرده و یا پوستر محصول را مشاهده نمایید.</p>
 
-        <div class="btn-group">
-            <a href="catalog.html" class="btn">📖 کاتالوگ</a>
-            <a href="https://drive.google.com/uc?export=download&id=FILE_ID_MANUAL" class="btn">📘 دفتر کارنما</a>
-            <a href="https://drive.google.com/uc?export=download&id=1rP3z0c4LE_LFKkc8vtr_C13Ej8GB3ldT" class="btn">🎬 فیلم مونتاژ دستگاه</a>
-            <a href="#" id="posterBtn" class="btn">🖼️ پوستر دستگاه</a>
-            <a href="https://drive.google.com/uc?export=download&id=1p-u7SLHVmgcudfay3Q2mXFhkdNJDPUXg" class="btn">🔑 فایل کد دستگاه</a>
-            <a href="https://drive.google.com/uc?export=download&id=FILE_ID_ZIP" class="btn">📦 دانلود کل به صورت زیپ</a>
-        </div>
-
+       <div class="btn-group">
+    <a href="catalog.html" class="btn">📖 کاتالوگ</a>
+    <a href="https://drive.google.com/uc?export=download&id=FILE_ID_MANUAL" class="btn">📘 دفتر کارنما</a>
+    <a href="https://drive.google.com/uc?export=download&id=1rP3z0c4LE_LFKkc8vtr_C13Ej8GB3ldT" class="btn">🎬 فیلم مونتاژ دستگاه</a>
+    <a href="https://drive.google.com/uc?export=download&id=1h9ICw-cZaxFkFXHJDHep0pJlpV0CWcMm" class="btn">🖼️ پوستر دستگاه</a>
+    <a href="https://drive.google.com/uc?export=download&id=1p-u7SLHVmgcudfay3Q2mXFhkdNJDPUXg" class="btn">🔑 فایل کد دستگاه</a>
+    <a href="https://drive.google.com/uc?export=download&id=FILE_ID_ZIP" class="btn">📦 دانلود کل به صورت زیپ</a>
+</div>
       
     </div>
     <div class="footer">
@@ -118,14 +117,7 @@
     </div>
 </div>
 
-<!-- پنجره بازشو برای نمایش پوستر -->
-<div id="posterModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
-    <div style="background:white; padding:1rem; border-radius:1rem; max-width:90%; max-height:90%; text-align:center;">
-        <img src="https://drive.google.com/uc?export=download&id=1h9ICw-cZaxFkFXHJDHep0pJlpV0CWcMm" alt="پوستر دستگاه" style="max-width:100%; max-height:70vh; border-radius:0.5rem;">
-        <br><br>
-        <button onclick="document.getElementById('posterModal').style.display='none'" class="btn" style="background:#e74c3c; margin-top:1rem;">بستن و برگشت</button>
-    </div>
-</div>
+
 
 <script>
     document.getElementById('posterBtn').onclick = function(e) {
